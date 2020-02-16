@@ -340,7 +340,13 @@ The following configuration for the SonataUserBundle defines:
         # optionally use a custom MaskBuilder
         parameters:
             sonata.admin.security.mask.builder.class: Sonata\AdminBundle\Security\Acl\Permission\MaskBuilder
+            
+Now we need to install AclBundle.
 
+.. configuration-block::
+  
+  composer require symfony/acl-bundle
+  
 In ``config/packages/security.yaml``:
 
 .. configuration-block::
@@ -399,10 +405,10 @@ In ``config/packages/security.yaml``:
                 ROLE_ADMIN:       [ROLE_USER, ROLE_SONATA_ADMIN]
                 ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
-            acl:
-                connection: default
+        acl:
+            connection: default
 
-- Install the ACL tables ``bin/console init:acl``
+- Install the ACL tables ``bin/console acl:init``
 
 - Create a new root user:
 
